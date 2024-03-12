@@ -1,6 +1,5 @@
-package com.gihub.grigoriykarpuhin.vkproject.album;
+package com.gihub.grigoriykarpuhin.vkproject.models;
 
-import com.gihub.grigoriykarpuhin.vkproject.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,17 +10,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor(force = true)
-@Table(name = "albums")
-public class Album {
+@NoArgsConstructor
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
     private String body;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 }

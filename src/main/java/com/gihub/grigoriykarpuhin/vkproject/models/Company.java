@@ -1,4 +1,4 @@
-package com.gihub.grigoriykarpuhin.vkproject.user;
+package com.gihub.grigoriykarpuhin.vkproject.models;
 
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
