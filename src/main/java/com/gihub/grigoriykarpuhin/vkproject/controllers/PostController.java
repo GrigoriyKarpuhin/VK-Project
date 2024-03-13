@@ -5,7 +5,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("posts")
-public class PostController extends AbstractController {
+public class PostController extends AbstractModelsController {
     public PostController(RestTemplate restTemplate) {
         super(restTemplate);
     }

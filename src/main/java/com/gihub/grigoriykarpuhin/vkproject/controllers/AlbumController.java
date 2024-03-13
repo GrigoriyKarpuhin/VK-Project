@@ -5,7 +5,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("albums")
-public class AlbumController extends AbstractController {
+public class AlbumController extends AbstractModelsController {
     public AlbumController(RestTemplate restTemplate) {
         super(restTemplate);
     }

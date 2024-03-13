@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RequiredArgsConstructor
-public abstract class AbstractController {
+public abstract class AbstractModelsController {
     protected final RestTemplate restTemplate;
+
     protected abstract String getBaseUrl();
 
     @GetMapping("/{id}")

@@ -5,7 +5,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("users")
-public class UserController extends AbstractController {
+public class UserController extends AbstractModelsController {
     public UserController(RestTemplate restTemplate) {
         super(restTemplate);
     }
