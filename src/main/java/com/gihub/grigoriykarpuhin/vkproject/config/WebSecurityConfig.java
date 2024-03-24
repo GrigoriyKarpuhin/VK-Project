@@ -28,10 +28,9 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
                         .requestMatchers("/registration").permitAll()
-                        .requestMatchers( "/posts/**", "/users/**", "/albums/**").hasAuthority("ROLE_ADMIN")
-                        .requestMatchers("/posts/**").hasAuthority("ROLE_POSTS")
-                        .requestMatchers("/albums/**").hasAuthority("ROLE_ALBUMS")
-                        .requestMatchers("/users/**").hasAuthority("ROLE_USERS")
+                        .requestMatchers("/posts/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_POSTS")
+                        .requestMatchers("/albums/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_ALBUMS")
+                        .requestMatchers("/users/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USERS")
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults());

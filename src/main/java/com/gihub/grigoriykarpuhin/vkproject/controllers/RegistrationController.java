@@ -1,5 +1,6 @@
 package com.gihub.grigoriykarpuhin.vkproject.controllers;
 
+import com.gihub.grigoriykarpuhin.vkproject.models.Role;
 import com.gihub.grigoriykarpuhin.vkproject.models.User;
 import com.gihub.grigoriykarpuhin.vkproject.services.UserService;
 import jakarta.validation.Valid;
@@ -10,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RegistrationController {
@@ -20,7 +20,7 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
-        model.addAttribute("role", "ROLE_USER");
+        model.addAttribute("role", "ROLE_");
         return "registration";
     }
 
@@ -34,7 +34,8 @@ public class RegistrationController {
             model.addAttribute("passwordError", "Пароли не совпадают");
             return "registration";
         }
-        if (!userService.saveUser(userForm, userForm.getRole())) {
+        Role role = userService.getRoleByName(userForm.getRoleName());
+        if (!userService.saveUser(userForm, role)) {
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "registration";
         }
