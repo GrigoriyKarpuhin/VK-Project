@@ -64,6 +64,10 @@
             <artifactId>spring-boot-docker-compose</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

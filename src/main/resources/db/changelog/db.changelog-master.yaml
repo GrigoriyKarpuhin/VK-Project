@@ -1,0 +1,91 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: GrigoriyKarpuhin
+      changes:
+        - createTable:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+  - changeSet:
+      id: 2
+      author: GrigoriyKarpuhin
+      preConditions:
+        - tableExists:
+            tableName: role
+      changes:
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: '1'
+              - column:
+                  name: name
+                  value: 'ROLE_ADMIN'
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: '2'
+              - column:
+                  name: name
+                  value: 'ROLE_POSTS'
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: '3'
+              - column:
+                  name: name
+                  value: 'ROLE_USERS'
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: '4'
+              - column:
+                  name: name
+                  value: 'ROLE_ALBUMS'
+  - changeSet:
+      id: 3
+      author: GrigoriyKarpuhin
+      preConditions:
+        - tableExists:
+            tableName: role
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(100)
+              - column:
+                  name: password
+                  type: varchar(100)
+              - column:
+                  name: role_id
+                  type: int
+        - addForeignKeyConstraint:
+            baseTableName: users
+            baseColumnNames: role_id
+            constraintName: fk_role_id
+            referencedTableName: role
+            referencedColumnNames: id
